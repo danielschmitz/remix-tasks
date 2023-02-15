@@ -1,14 +1,12 @@
 import dotenv from 'dotenv';
+const knexfile = require('../knexfile')
 
 dotenv.config();
-
-const knexfile = require('../knexfile')
+const isProduction = process.env.NODE_ENV === 'production'
 
 declare global {
   var __db: any | undefined;
 }
-
-const isProduction = process.env.NODE_ENV === 'production'
 
 let db: any;
 
@@ -23,6 +21,5 @@ if (!global.__db) {
   console.log('use global db')
   db = global.__db
 }
-
 
 export default db
