@@ -1,6 +1,7 @@
 import pico from '../styles/pico.min.css'
 import base from '../styles/base.css'
-import { Link, Outlet } from '@remix-run/react';
+import { Link, Outlet, useLoaderData } from '@remix-run/react';
+import db from '../db'
 
 export function links() {
     return [
@@ -9,7 +10,12 @@ export function links() {
     ];
 }
 
+export function loader() {
+    return db("tasks")
+}
+
 export default function Tasks() {
+    const tasks = useLoaderData();
     return <><div className='container'>
         <nav>
             <ul>
