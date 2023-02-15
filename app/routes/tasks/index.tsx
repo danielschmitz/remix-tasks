@@ -1,7 +1,8 @@
 
-import { ActionArgs } from '@remix-run/node';
+import type { ActionArgs } from '@remix-run/node';
 import { Form, useLoaderData, useSubmit } from '@remix-run/react';
 import db from '~/db'
+import type Task from '~/Task';
 
 export function loader() {
     return db("tasks").orderBy("id", "desc")
@@ -20,7 +21,7 @@ export async function action({ request }: ActionArgs) {
     return null;
 }
 
-const Task = (task: any) => {
+const TaskCheckBox = (task: Task) => {
     return <li key={task.id}>
         <input type="checkbox" id="task" defaultChecked={task.done} name={`task-${task.id}`}/>
         {task.name}
@@ -28,7 +29,7 @@ const Task = (task: any) => {
 }
 
 export default function Tasks() {
-    const tasks = useLoaderData<typeof loader>();
+    const tasks = useLoaderData<Task[]>();
     const submit = useSubmit();
     
     const handleChange = (e: any) => {
@@ -42,7 +43,7 @@ export default function Tasks() {
             <ul>
                 <Form method="post" onChange={handleChange}>
                     <input type="hidden" name="nome" value="valor" />
-                    {tasks.map(task => Task(task))}
+                    {tasks.map(task => TaskCheckBox(task))}
                 </Form>
             </ul>
         </article>
