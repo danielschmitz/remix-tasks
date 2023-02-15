@@ -16,6 +16,7 @@ export function loader() {
 
 export default function Tasks() {
     const tasks = useLoaderData();
+    console.log(tasks)
     return <><div className='container'>
         <nav>
             <ul>
