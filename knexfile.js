@@ -34,4 +34,4 @@ const knexfile = {
   }
 };
 
-export default knexfile;
+module.exports = knexfile;
