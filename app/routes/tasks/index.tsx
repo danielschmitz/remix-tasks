@@ -4,12 +4,13 @@ import { Form, useLoaderData, useSubmit } from '@remix-run/react';
 import db from '~/db'
 
 export function loader() {
-    return db("tasks")
+    return db("tasks").orderBy("id", "desc")
 }
 
 export async function action({ request }: ActionArgs) {
     const form = await request.formData();
     const taskName = form.get("taskName")||'';
+
     const taskValue = form.get("taskValue");
 
     const id = taskName.toString().split("-")[1];
