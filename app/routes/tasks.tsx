@@ -1,6 +1,6 @@
 import pico from '../styles/pico.min.css'
 import base from '../styles/base.css'
-import { Link, Outlet, useLoaderData } from '@remix-run/react';
+import { Link, Outlet } from '@remix-run/react';
 import db from '../db'
 
 export function links() {
@@ -9,6 +9,7 @@ export function links() {
         { rel: "stylesheet", href: base },
     ];
 }
+
 
 export default function Tasks() {
     return <><div className='container'>
