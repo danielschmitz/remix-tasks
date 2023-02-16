@@ -11,14 +11,12 @@ declare global {
 let db: any;
 
 if (!global.__db) {
-  console.log('set global db')
   db = require('knex')(
     isProduction ?
         knexfile.production : knexfile.development
   )
   global.__db = db
 } else {
-  console.log('use global db')
   db = global.__db
 }
 

@@ -10,13 +10,7 @@ export function links() {
     ];
 }
 
-export function loader() {
-    return db("tasks")
-}
-
 export default function Tasks() {
-    const tasks = useLoaderData();
-    console.log(tasks)
     return <><div className='container'>
         <nav>
             <ul>
