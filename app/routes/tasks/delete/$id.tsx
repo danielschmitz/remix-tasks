@@ -1,5 +1,5 @@
 
-import { ActionArgs, LoaderArgs, redirect } from "@remix-run/node";
+import { type ActionArgs, type LoaderArgs, redirect } from "@remix-run/node";
 import { Form, Link, useLoaderData } from "@remix-run/react";
 import db from "~/db";
 import type Task from "~/Task";
