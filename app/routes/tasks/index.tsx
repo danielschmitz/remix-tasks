@@ -30,7 +30,7 @@ const TaskCheckBox = (task: Task) => {
         </div>
         <div style={{display: 'flex', justifyContent: 'end', gap: '10px'}}>
             <Link to={`/tasks/edit/${task.id}`} >Edit</Link>
-            <a href="#" >Delete</a>
+            <Link to={`/tasks/delete/${task.id}`} >Delete</Link>
         </div>
 
     </div>
