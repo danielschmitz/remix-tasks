@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { useState } from "react";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -15,8 +16,11 @@ export const meta: MetaFunction = () => ({
 });
 
 export default function App() {
+
+  const [theme, setTheme] = useState<string>('dark');
+
   return (
-    <html lang="en">
+    <html lang="en" data-theme={theme}>
       <head>
         <Meta />
         <Links />
@@ -26,6 +30,10 @@ export default function App() {
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <div style={{textAlign: 'center'}}>
+        <a href="#" onClick={()=>setTheme('dark')}>Dark</a>&nbsp;|&nbsp;
+        <a href="#" onClick={()=>setTheme('light')}>Light</a>
+        </div>
       </body>
     </html>
   );
