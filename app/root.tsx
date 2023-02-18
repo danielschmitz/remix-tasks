@@ -17,10 +17,10 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
 
-  const [theme, setTheme] = useState<string>('dark');
+  const [theme, setTheme] = useState<string>('system');
 
   return (
-    <html lang="en" data-theme={theme}>
+    <html lang="en" {...theme!='system' && {'data-theme' : theme}}>
       <head>
         <Meta />
         <Links />
@@ -32,7 +32,8 @@ export default function App() {
         <LiveReload />
         <div style={{textAlign: 'center'}}>
         <a href="#" onClick={()=>setTheme('dark')}>Dark</a>&nbsp;|&nbsp;
-        <a href="#" onClick={()=>setTheme('light')}>Light</a>
+        <a href="#" onClick={()=>setTheme('light')}>Light</a>&nbsp;|&nbsp;
+        <a href="#" onClick={()=>setTheme('system')}>System</a>
         </div>
       </body>
     </html>
